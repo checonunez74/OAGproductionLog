@@ -568,11 +568,18 @@
                                 <rect key="frame" x="0.0" y="615" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="Jfr-6o-VVg">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="ZWa-E5-2UT">
-                                            <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" identifier="toHome" id="IMb-zZ-ty4"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Home" id="ZWa-E5-2UT">
+                                                <connections>
+                                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toHome" id="IMb-zZ-ty4"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Save" id="x0v-0m-spR">
+                                                <connections>
+                                                    <action selector="saveBTN:" destination="avy-Zn-79S" id="Zcp-LZ-Z4j"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

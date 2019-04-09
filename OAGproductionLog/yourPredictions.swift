@@ -11,10 +11,17 @@ import UIKit
 class yourPredictions: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-
+    @IBAction func saveBTN(_ sender: Any) {
+       
+      
+    }
+    
+    
     var goaledValues : String? = ""
     var doneValues : String? = ""
     var resultsValues : String? = ""
+    
+    
     
     var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     
@@ -28,6 +35,8 @@ class yourPredictions: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+ 
 }
 
 extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
@@ -36,20 +45,19 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
         return days.count
     }
     
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //statement to convert goaledValues to String. Commented out for now!
         // let goaledVal:String! = goaledValues
-    print(goaledValues as Any)
-    print(doneValues as Any)
-    print(resultsValues as Any)
+        print(goaledValues as Any)
+        print(doneValues as Any)
+        print(resultsValues as Any)
     
         let weekDays = days[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
     
         func calculator(){
-            if let x = doneValues, let text = doneValues {
-                print ("\(x), \(text)")
+   
                 var goaled = 0
                 var done = 0
                 var results = 0
@@ -66,8 +74,6 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
                 cell.goaledLabel.text = String(goaled)
                 cell.doneLabel.text = String(done)
                 cell.resultsLabel.text = String(results)
-            }
-            
         }
     
         cell.dayLabel.text = weekDays
@@ -80,9 +86,12 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
            calculator()
         }
     
+        func dataSaved() {
+            print("Running dataSaved fuction")
+        }
+    
         return cell
     }
-    
     
     
 }
