@@ -21,7 +21,6 @@ class InputTotals: UIViewController {
     var goaledtodayCases = ""
     var casesResultsData = ""
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +34,6 @@ class InputTotals: UIViewController {
         // Getting the value from UITextField into the variable
         inputdayCases = inputDaycases.text
         
-       
         // Convert value to Int and use it for calculations. Calculating the difference from cases done and goaled cases
         let results = Int(goaledtodayCases)! - Int(inputdayCases)!
        
@@ -66,5 +64,4 @@ class InputTotals: UIViewController {
         destVCyouPredictions.resultsValues = casesResultsData
         
     }
-    
 }
