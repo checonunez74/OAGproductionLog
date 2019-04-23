@@ -13,15 +13,11 @@ class yourPredictions: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBAction func saveBTN(_ sender: Any) {
        
-      
     }
-    
     
     var goaledValues : String? = ""
     var doneValues : String? = ""
     var resultsValues : String? = ""
-    
-    
     
     var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     
@@ -35,8 +31,6 @@ class yourPredictions: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
- 
 }
 
 extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
@@ -53,45 +47,47 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
         print(resultsValues as Any)
     
         let weekDays = days[indexPath.row]
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
-    
+        print("##################")
+        print(cell)
+        
         func calculator(){
    
                 var goaled = 0
                 var done = 0
                 var results = 0
-                
-                let intDoneValues = Int(doneValues!)!
+                let number:Int? = goaled
+            
+                if number == nil {
+                let intDoneValues = Int(doneValues!)! //This line is presenting a fatal error
                 let intGoaledValues = Int(goaledValues!)!
                 
                 results = intDoneValues - intGoaledValues
                 if(results > 0){
                     goaled = intGoaledValues - results
                     results = 0
-                }
-                
+                }else {print("############no  data here#############")}
+            
+                //Placing values on Tuesday row, the goal value is already calculated
+                //At this point data has to be saved to be used in next day calculations
                 cell.goaledLabel.text = String(goaled)
                 cell.doneLabel.text = String(done)
                 cell.resultsLabel.text = String(results)
+            }
         }
-    
-        cell.dayLabel.text = weekDays
-        cell.goaledLabel.text = goaledValues
-        //Assigning values to the rirst row only
+        
+        //Assigning values to the first row only
+        cell.dayLabel?.text = weekDays
+        cell.goaledLabel?.text = goaledValues
+       
+        //Assigning values to Done and Results labels
         if indexPath.row == 0 {
-            cell.doneLabel.text = doneValues
-            cell.resultsLabel.text = resultsValues
+            cell.doneLabel?.text = doneValues
+            cell.resultsLabel?.text = resultsValues
         }else if indexPath.row == 1 {
            calculator()
         }
-    
-        func dataSaved() {
-            print("Running dataSaved fuction")
-        }
-    
         return cell
     }
-    
-    
 }

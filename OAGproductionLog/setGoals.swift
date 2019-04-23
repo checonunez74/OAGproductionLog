@@ -14,7 +14,6 @@ class setGoals: UIViewController {
     @IBOutlet weak var weekGoalText: UITextField!
     @IBOutlet weak var monthGoalText: UITextField!
     
-    
     var DailyValue : String!
     var WeeklyValue : String!
     var MonthlyValue : String!
@@ -27,15 +26,15 @@ class setGoals: UIViewController {
     //Button function for setDaily value
     @IBAction func setDailyGoalButton(_ sender: Any) {
         
-        
         DailyValue = dayGoalText.text
         WeeklyValue = weekGoalText.text
         MonthlyValue = monthGoalText.text
         performSegue(withIdentifier: "toGoals", sender: nil)
+        
     }
     
   
-    //Passing Data from set goals to Goals and InputTotals Scene labels
+    //Passing Data from setGoals to Goals and InputTotals Scene labels
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         //Sending values to goals screen labels
@@ -45,6 +44,5 @@ class setGoals: UIViewController {
         destVC.weekValues = WeeklyValue
         destVC.monthValues = MonthlyValue
         
-   
     }
 }
