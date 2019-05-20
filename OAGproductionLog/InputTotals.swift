@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class InputTotals: UIViewController {
     
@@ -30,14 +31,10 @@ class InputTotals: UIViewController {
         goalCasesLabel.text = goaledtodayCases
         casesResults.text = casesResultsData
         
-        // //////Saving data in phone to use in next day calculations
-        let resultsDefault = UserDefaults.standard
         
-        if (resultsDefault.value(forKey: "resultsSaved") != nil ){
-            results = resultsDefault.value(forKey: "resultsSaved") as! NSInteger
-        }
-        /////////////////////////////////////////////////////////////////////////
     }
+    
+    
     
     @IBAction func calculateButton(_ sender: Any) {
         

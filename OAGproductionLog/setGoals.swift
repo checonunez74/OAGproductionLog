@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class setGoals: UIViewController {
 
     @IBOutlet weak var dayGoalText: UITextField!
