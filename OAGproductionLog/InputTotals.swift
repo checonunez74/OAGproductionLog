@@ -71,6 +71,7 @@ class InputTotals: UIViewController {
         statistics.results = Int16(casesResultsData)!
         PersistenceService.saveContext()
         self.resultsARRAY.append(statistics)
+        //yourPredictions.tableView.reloadData() //At this point the table has to be reloaded but my table is in another VC
         print("PRINTING ARRAY RESULTS:")
         print(resultsARRAY)
     }

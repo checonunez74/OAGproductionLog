@@ -16,7 +16,7 @@ extension Statistics {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Statistics> {
         return NSFetchRequest<Statistics>(entityName: "Statistics")
     }
-
+   
    // @NSManaged public var day: String?
     @NSManaged public var goal: Int16
     @NSManaged public var done: Int16
