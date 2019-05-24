@@ -22,14 +22,15 @@ class yourPredictions: UIViewController {
 
     @IBAction func saveBTN(_ sender: Any) {
        //needs code to save data
+         savingData()
+        print("SAVED BUTTON PRESSED")
     }
     
     override func viewDidLoad() {
         super .viewDidLoad()
         
-         savingData()
-
         
+
         // getting values from Statistics Class where we saved previously
         let fetchRequest: NSFetchRequest<Statistics> = Statistics.fetchRequest()
         
@@ -39,7 +40,6 @@ class yourPredictions: UIViewController {
             self.tableView.reloadData()
         } catch {
             print("Soemthing went wrong when trying to get values from the PersistenceService function")
-            
         }
         
         tableView.delegate = self
@@ -86,33 +86,29 @@ class yourPredictions: UIViewController {
 //        }
 //    }
 
-    
 }
 
 extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return days.count
+         return days.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
         //Creates object to make cells in the table
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
         // Iterates days array to display day by index
         let weekDays = days[indexPath.row]
-        //While loo to populate table view
-        var ctr = days.count
-        print(ctr)
-        while indexPath.row <= ctr {
+
             //Assigning values to the first row of the table only
             //Assigning values to Done and Results labels in the Table
             cell.dayLabel?.text = weekDays
-            cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
-            cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
-            cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)
-            ctr-=1
-            print("The counter:, \(ctr)")
-        }
-        return cell
+            cell.goaledLabel?.text = String(arrayStats[0].goal)
+            cell.doneLabel?.text = String(arrayStats[1].done)
+            cell.resultsLabel?.text = String(arrayStats[2].results)
+           
+       return cell
     }
 }
