@@ -26,10 +26,7 @@ class InputTotals: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = UserDefaults.standard
-        defaults.set(self.resultsARRAY, forKey: "resultsKEY")
-        goalCasesLabel.text = goaledtodayCases
-        casesResults.text = casesResultsData
+
     }
     
     @IBAction func calculateButton(_ sender: Any) {
@@ -64,31 +61,8 @@ class InputTotals: UIViewController {
         }
         //storing result inside variable as a String
         casesResultsData = String(abs(results))
-        
-        
-      
     }
     
-    func performanceCalculator(){
-        
-        var goaled = 0
-        var done = 0
-        var results = 0
-        let number:Int? = goaled
-        
-        if number == nil {
-            let intDoneValues = Int(inputdayCases!)! //This line is presenting a fatal error
-            let intGoaledValues = Int(goaledtodayCases)!
-            
-            results = intDoneValues - intGoaledValues
-            
-            if(results > 0){
-                goaled = intGoaledValues - results
-                results = 0
-            }else {print("############ no  data here #############")}
-            
-                    }
-    }
     
     func savingValues() {
         let statistics = Statistics(context: PersistenceService.context)
@@ -97,21 +71,19 @@ class InputTotals: UIViewController {
         statistics.results = Int16(casesResultsData)!
         PersistenceService.saveContext()
         self.resultsARRAY.append(statistics)
-       
-        
         print("PRINTING ARRAY RESULTS:")
         print(resultsARRAY)
     }
     
     //override function to send data to another View Controller via segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
 
     //sending values to yourPredictions screen label
-    let destVCyouPredictions = segue.destination as! yourPredictions
+//    let destVCyouPredictions = segue.destination as! yourPredictions
         
-          destVCyouPredictions.arrayStats = resultsARRAY
-        destVCyouPredictions.goaledValues = goaledtodayCases
-        destVCyouPredictions.doneValues = inputdayCases
-        destVCyouPredictions.resultsValues = casesResultsData
-    }
+//          destVCyouPredictions.arrayStats = resultsARRAY
+//        destVCyouPredictions.goaledValues = Statistics.goal
+//        destVCyouPredictions.doneValues = statistics.done
+//        destVCyouPredictions.resultsValues = statistics.results
+//    }
 }
