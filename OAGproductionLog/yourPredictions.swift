@@ -90,8 +90,6 @@ class yourPredictions: UIViewController {
 
 extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
  
-
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return days.count
         
