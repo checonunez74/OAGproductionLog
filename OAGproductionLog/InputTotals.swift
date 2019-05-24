@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class InputTotals: UIViewController {
     
     @IBOutlet weak var inputDaycases: UITextField!
@@ -20,19 +20,19 @@ class InputTotals: UIViewController {
     // variable to place incoming values from the goal daycases viewcontrollers
     var goaledtodayCases = ""
     var casesResultsData = ""
-   
+    
+    // variable to store results in core
+    var resultsARRAY = [Statistics]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        goalCasesLabel.text = goaledtodayCases
-        casesResults.text = casesResultsData
-        
+
     }
     
     @IBAction func calculateButton(_ sender: Any) {
         
         // Getting the value from UITextField into the variable
-        inputdayCases = inputDaycases.text
+        inputdayCases = inputDaycases?.text
         
         // Convert value to Int and use it for calculations. Calculating the difference from cases done and goaled cases
         let results = Int(goaledtodayCases)! - Int(inputdayCases)!
@@ -41,27 +41,49 @@ class InputTotals: UIViewController {
         if Int(goaledtodayCases)! < Int(inputdayCases)! {
             let alert = UIAlertController(title: "Today's Results", message: "You exceeded your \(goaledtodayCases) cases goal by: \(abs(results)) cases Congratulations!", preferredStyle: .alert)
                 self.present(alert, animated: true)
-            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: {action in self.performSegue(withIdentifier: "yourPredictions", sender: self)}))
+            alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {
+               action in self.performSegue(withIdentifier: "yourPredictions", sender: self)
+                
+                self.savingValues()
+                print("PRINTING ARRAY RESULTS in ALERT:")
+                print(self.resultsARRAY)
+                print("################# Data SAVED and Sent to Your PredictionsVC ################")
+            }))
         }else if Int(goaledtodayCases)! >= Int(inputdayCases)! {
             
             print("Today you were off by: \(abs(results)) from your goal of: \(goaledtodayCases) cases")
             let alert = UIAlertController(title: "Today's Results", message: "You were off by: \(abs(results)) from your goal of: \(goaledtodayCases) cases", preferredStyle: .alert)
             self.present(alert, animated: true)
-            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in self.performSegue(withIdentifier: "yourPredictions", sender: self)
+                self.savingValues()
+                print("################# Data SAVED and Sent to Your PredictionsVC ################")
+            }))
         }
-        //storing result inside variable
+        //storing result inside variable as a String
         casesResultsData = String(abs(results))
-      
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
     
-        //sending values to yourPredictions screen label
-        let destVCyouPredictions = segue.destination as! yourPredictions
-        
-        destVCyouPredictions.goaledValues = goaledtodayCases
-        destVCyouPredictions.doneValues = inputdayCases
-        destVCyouPredictions.resultsValues = casesResultsData
-        
+    func savingValues() {
+        let statistics = Statistics(context: PersistenceService.context)
+        statistics.goal = Int16(goaledtodayCases)!
+        statistics.done = Int16(inputdayCases)!
+        statistics.results = Int16(casesResultsData)!
+        PersistenceService.saveContext()
+        self.resultsARRAY.append(statistics)
+        print("PRINTING ARRAY RESULTS:")
+        print(resultsARRAY)
     }
+    
+    //override function to send data to another View Controller via segue
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+
+    //sending values to yourPredictions screen label
+//    let destVCyouPredictions = segue.destination as! yourPredictions
+        
+//          destVCyouPredictions.arrayStats = resultsARRAY
+//        destVCyouPredictions.goaledValues = Statistics.goal
+//        destVCyouPredictions.doneValues = statistics.done
+//        destVCyouPredictions.resultsValues = statistics.results
+//    }
 }

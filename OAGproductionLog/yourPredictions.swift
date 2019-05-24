@@ -7,27 +7,86 @@
 //
 
 import UIKit
+import CoreData
 
 class yourPredictions: UIViewController {
     
+    var goaledValues : Int16?
+    var doneValues : Int16?
+    var resultsValues : Int16?
+    var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    
+    var arrayStats = [Statistics]()
+    
     @IBOutlet weak var tableView: UITableView!
 
-    var goaledValues : String? = ""
-    var doneValues : String? = ""
-    var resultsValues : String? = ""
-    
-    var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    @IBAction func saveBTN(_ sender: Any) {
+       //needs code to save data
+    }
     
     override func viewDidLoad() {
         super .viewDidLoad()
         
-        print(goaledValues as Any)
-        print(doneValues as Any)
-        print(resultsValues as Any)
-       
+         savingData()
+
+        
+        // getting values from Statistics Class where we saved previously
+        let fetchRequest: NSFetchRequest<Statistics> = Statistics.fetchRequest()
+        
+        do {
+            let arrayStats = try PersistenceService.context.fetch(fetchRequest)
+            self.arrayStats = arrayStats
+            self.tableView.reloadData()
+        } catch {
+            print("Soemthing went wrong when trying to get values from the PersistenceService function")
+            
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    @objc func loadList(notification: NSNotification){
+        //load data here
+        self.tableView.reloadData()
+    }
+    
+    func savingData() {
+        //populating new array with values from Statistics class
+        let dataStats = Statistics(context: PersistenceService.context)
+        //If statement to prevent unwrapping error
+        if (dataStats == nil){
+            dataStats.goal = goaledValues!
+            dataStats.done = doneValues!
+            dataStats.results = resultsValues!
+            PersistenceService.saveContext()
+            self.arrayStats.append(dataStats)
+            self.tableView.reloadData()
+        }
+    }
+    
+//    func performanceCalculator(){
+//        
+//        var goaled = 0
+//        var done = 0
+//        var results = 0
+//        let number:Int? = goaled
+//        
+//        if number == nil {
+//            let intDoneValues = Int(inputdayCases!)! //This line is presenting a fatal error
+//            let intGoaledValues = Int(goaledtodayCases)!
+//            
+//            results = intDoneValues - intGoaledValues
+//            
+//            if(results > 0){
+//                goaled = intGoaledValues - results
+//                results = 0
+//            }else {print("############ no  data here #############")}
+//            
+//        }
+//    }
+
+    
 }
 
 extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
@@ -36,53 +95,24 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
         return days.count
     }
     
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //statement to convert goaledValues to String. Commented out for now!
-        // let goaledVal:String! = goaledValues
-    print(goaledValues as Any)
-    print(doneValues as Any)
-    print(resultsValues as Any)
-    
-        let weekDays = days[indexPath.row]
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Creates object to make cells in the table
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
-    
-        func calculator(){
-            if let x = doneValues, let text = doneValues {
-                print ("\(x), \(text)")
-                var goaled = 0
-                var done = 0
-                var results = 0
-                
-                let intDoneValues = Int(doneValues!)!
-                let intGoaledValues = Int(goaledValues!)!
-                
-                results = intDoneValues - intGoaledValues
-                if(results > 0){
-                    goaled = intGoaledValues - results
-                    results = 0
-                }
-                
-                cell.goaledLabel.text = String(goaled)
-                cell.doneLabel.text = String(done)
-                cell.resultsLabel.text = String(results)
-            }
-            
+        // Iterates days array to display day by index
+        let weekDays = days[indexPath.row]
+        //While loo to populate table view
+        var ctr = days.count
+        print(ctr)
+        while indexPath.row <= ctr {
+            //Assigning values to the first row of the table only
+            //Assigning values to Done and Results labels in the Table
+            cell.dayLabel?.text = weekDays
+            cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
+            cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
+            cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)
+            ctr-=1
+            print("The counter:, \(ctr)")
         }
-    
-        cell.dayLabel.text = weekDays
-        cell.goaledLabel.text = goaledValues
-        //Assigning values to the rirst row only
-        if indexPath.row == 0 {
-            cell.doneLabel.text = doneValues
-            cell.resultsLabel.text = resultsValues
-        }else if indexPath.row == 1 {
-           calculator()
-        }
-    
         return cell
     }
-    
-    
-    
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4362021622931FA7001EED6C /* Statistics+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362021422931FA7001EED6C /* Statistics+CoreDataClass.swift */; };
+		4362021722931FA7001EED6C /* Statistics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362021522931FA7001EED6C /* Statistics+CoreDataProperties.swift */; };
+		4362021922934B0F001EED6C /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362021822934B0F001EED6C /* PersistenceService.swift */; };
 		43673B4C2236D874002DA788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43673B4B2236D874002DA788 /* AppDelegate.swift */; };
 		43673B512236D874002DA788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43673B4F2236D874002DA788 /* Main.storyboard */; };
 		43673B542236D874002DA788 /* OAGproductionLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43673B522236D874002DA788 /* OAGproductionLog.xcdatamodeld */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4362021422931FA7001EED6C /* Statistics+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4362021522931FA7001EED6C /* Statistics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4362021822934B0F001EED6C /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		43673B482236D874002DA788 /* OAGproductionLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAGproductionLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43673B4B2236D874002DA788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43673B502236D874002DA788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,13 +117,16 @@
 		43673B4A2236D874002DA788 /* OAGproductionLog */ = {
 			isa = PBXGroup;
 			children = (
+				4362021422931FA7001EED6C /* Statistics+CoreDataClass.swift */,
+				4362021522931FA7001EED6C /* Statistics+CoreDataProperties.swift */,
 				43673B4B2236D874002DA788 /* AppDelegate.swift */,
 				43D2785B2238474000F0A474 /* OAG_productionLog.swift */,
 				43D2785F223956B500F0A474 /* InputTotals.swift */,
-				43673B7E22382AC9002DA788 /* setGoals.swift */,
 				438E084A224A9B7200033366 /* yourPredictions.swift */,
+				43673B7E22382AC9002DA788 /* setGoals.swift */,
 				438E0848224A99B900033366 /* dataResults.swift */,
 				43D2785D2238506600F0A474 /* Goals.swift */,
+				4362021822934B0F001EED6C /* PersistenceService.swift */,
 				43673B4F2236D874002DA788 /* Main.storyboard */,
 				438E084E224B036C00033366 /* ResultsCell.swift */,
 				43673B552236D875002DA788 /* Assets.xcassets */,
@@ -278,14 +287,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				438E0849224A99B900033366 /* dataResults.swift in Sources */,
+				4362021922934B0F001EED6C /* PersistenceService.swift in Sources */,
 				43D2785E2238506600F0A474 /* Goals.swift in Sources */,
 				43D2785C2238474000F0A474 /* OAG_productionLog.swift in Sources */,
 				43673B4C2236D874002DA788 /* AppDelegate.swift in Sources */,
 				43673B542236D874002DA788 /* OAGproductionLog.xcdatamodeld in Sources */,
 				438E084B224A9B7200033366 /* yourPredictions.swift in Sources */,
+				4362021622931FA7001EED6C /* Statistics+CoreDataClass.swift in Sources */,
 				43673B7F22382AC9002DA788 /* setGoals.swift in Sources */,
 				43D27860223956B500F0A474 /* InputTotals.swift in Sources */,
 				438E084F224B036C00033366 /* ResultsCell.swift in Sources */,
+				4362021722931FA7001EED6C /* Statistics+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
