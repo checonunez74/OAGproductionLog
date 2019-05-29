@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-128"/>
+            <point key="canvasLocation" x="2302" y="-103"/>
         </scene>
         <!--Set Goals-->
         <scene sceneID="oDu-UZ-h1e">
@@ -452,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="low-cc-IYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="889"/>
+            <point key="canvasLocation" x="785" y="642"/>
         </scene>
         <!--Your Predictions-->
         <scene sceneID="iJN-gm-1vT">
@@ -499,13 +499,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYw-AW-j5C">
-                                                    <rect key="frame" x="14" y="-15" width="87" height="61"/>
+                                                    <rect key="frame" x="14" y="-15" width="87" height="60.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbQ-TL-yuv">
-                                                    <rect key="frame" x="282" y="-15" width="65" height="61"/>
+                                                    <rect key="frame" x="282" y="-15" width="65" height="60.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="iYI-e0-HzH"/>
                                                     </constraints>
@@ -514,7 +514,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goaled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIM-O3-ccz">
-                                                    <rect key="frame" x="123" y="-15" width="65" height="61"/>
+                                                    <rect key="frame" x="123" y="-15" width="65" height="60.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="pXd-YY-Q7k"/>
                                                     </constraints>
@@ -523,7 +523,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRe-hC-xAE">
-                                                    <rect key="frame" x="209" y="-15" width="65" height="61"/>
+                                                    <rect key="frame" x="209" y="-15" width="65" height="60.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="7lu-Vm-9G8"/>
                                                     </constraints>
@@ -622,7 +622,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ose-ph-M8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188" y="-115.59220389805098"/>
+            <point key="canvasLocation" x="826" y="-128"/>
         </scene>
     </scenes>
     <resources>
@@ -634,7 +634,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="liW-0T-nAB"/>
-        <segue reference="xIZ-nN-mfK"/>
+        <segue reference="bpD-OF-Xv8"/>
         <segue reference="IMb-zZ-ty4"/>
     </inferredMetricsTieBreakers>
 </document>

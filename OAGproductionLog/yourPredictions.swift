@@ -21,7 +21,7 @@ class yourPredictions: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     @IBAction func saveBTN(_ sender: Any) {
-       //needs code to save data
+       
          savingData()
         print("SAVED BUTTON PRESSED")
     }
