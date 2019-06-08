@@ -17,12 +17,14 @@ class yourPredictions: UIViewController {
     var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     
     var arrayStats = [Statistics]()
+    var inputTotalsVals = Statistics(context: PersistenceService.context)
     
     @IBOutlet weak var tableView: UITableView!
 
     @IBAction func saveBTN(_ sender: Any) {
        
-         savingData()
+        savingData()
+        print(inputTotalsVals)
         print("SAVED BUTTON PRESSED")
     }
     
@@ -53,7 +55,7 @@ class yourPredictions: UIViewController {
     
     func savingData() {
         //populating new array with values from Statistics class
-        let dataStats = Statistics(context: PersistenceService.context)
+         let dataStats = Statistics(context: PersistenceService.context)
         //If statement to prevent unwrapping error
         if (dataStats == nil){
             dataStats.goal = goaledValues!
