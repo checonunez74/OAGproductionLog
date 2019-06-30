@@ -12,7 +12,6 @@ class ResultsCell: UITableViewCell {
     
     @IBOutlet weak var dayLabel: UILabel!
     
-  
     @IBOutlet weak var goaledLabel: UILabel!
     
     @IBOutlet weak var doneLabel: UILabel!

@@ -18,7 +18,7 @@ class yourPredictions: UIViewController {
     
     var arrayStats = [Statistics]()
     var inputTotalsVals = Statistics(context: PersistenceService.context)
-   
+    var rowCounter:Int = 0
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -30,7 +30,13 @@ class yourPredictions: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        
         super .viewDidLoad()
+        rowCounter = rowCounter + 1
+
+        print("&&&&&&&&&&&&&&&&&&")
+        print(rowCounter)
 
         // getting values from Statistics Class where we saved previously
         let fetchRequest: NSFetchRequest<Statistics> = Statistics.fetchRequest()
@@ -92,6 +98,10 @@ class yourPredictions: UIViewController {
 }
 
 extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return days.count
@@ -99,19 +109,21 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
+     
         //Creates object to make cells in the table
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
-        // Iterates days array to display day by index
-      
-
+        let counter = days.count
+        if ( counter > 0 ){
+        
             //Assigning values to the first row of the table only
             //Assigning values to Done and Results labels in the Table
-        cell.dayLabel?.text = days[indexPath.row]
-        cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
-        cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
-        cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)
-           
+        
+            cell.dayLabel?.text = days[indexPath.row]
+            cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
+            cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
+            cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)
+            
+        } else { print("Database is empty!") }
        return cell
     }
 }
