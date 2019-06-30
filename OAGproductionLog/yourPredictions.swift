@@ -18,6 +18,7 @@ class yourPredictions: UIViewController {
     
     var arrayStats = [Statistics]()
     var inputTotalsVals = Statistics(context: PersistenceService.context)
+   
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -30,8 +31,6 @@ class yourPredictions: UIViewController {
     
     override func viewDidLoad() {
         super .viewDidLoad()
-        
-        
 
         // getting values from Statistics Class where we saved previously
         let fetchRequest: NSFetchRequest<Statistics> = Statistics.fetchRequest()
@@ -47,6 +46,8 @@ class yourPredictions: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+
     
     @objc func loadList(notification: NSNotification){
         //load data here
@@ -102,14 +103,14 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
         //Creates object to make cells in the table
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
         // Iterates days array to display day by index
-        let weekDays = days[indexPath.row]
+      
 
             //Assigning values to the first row of the table only
             //Assigning values to Done and Results labels in the Table
-            cell.dayLabel?.text = weekDays
-            cell.goaledLabel?.text = String(arrayStats[0].goal)
-            cell.doneLabel?.text = String(arrayStats[1].done)
-            cell.resultsLabel?.text = String(arrayStats[2].results)
+        cell.dayLabel?.text = days[indexPath.row]
+        cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
+        cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
+        cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)
            
        return cell
     }

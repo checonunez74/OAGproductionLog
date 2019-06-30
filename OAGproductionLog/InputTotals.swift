@@ -26,7 +26,7 @@ class InputTotals: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        goalCasesLabel.text = goaledtodayCases
     }
     
     @IBAction func calculateButton(_ sender: Any) {
@@ -77,14 +77,15 @@ class InputTotals: UIViewController {
     }
     
     //override function to send data to another View Controller via segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
 
     //sending values to yourPredictions screen label
-//    let destVCyouPredictions = segue.destination as! yourPredictions
+    let destVCyourPredictions = segue.destination as! yourPredictions
         
-//          destVCyouPredictions.arrayStats = resultsARRAY
+        destVCyourPredictions.arrayStats = resultsARRAY
+       
 //        destVCyouPredictions.goaledValues = Statistics.goal
 //        destVCyouPredictions.doneValues = statistics.done
 //        destVCyouPredictions.resultsValues = statistics.results
-//    }
+    }
 }
