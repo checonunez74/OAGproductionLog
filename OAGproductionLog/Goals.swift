@@ -10,18 +10,20 @@ import UIKit
 
 class Goals: UIViewController {
     
-   
+    @IBOutlet weak var dayNameLabel: UILabel!
     @IBOutlet weak var dataPassedLabel: UILabel!
     @IBOutlet weak var dataPassedLabel2: UILabel!
     @IBOutlet weak var dataPassedLabel3: UILabel!
     
     // variables to place values coming from setGoals viewcontroller
+    var dayName = ""
     var dayValues = ""
     var weekValues = ""
     var monthValues = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayNameLabel?.text = dayName
         dataPassedLabel?.text = dayValues
         dataPassedLabel2?.text = weekValues
         dataPassedLabel3?.text = monthValues
@@ -31,8 +33,9 @@ class Goals: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         //sending values to input totals screen label
         let destVCinputTotals = segue.destination as! InputTotals
+        destVCinputTotals.dayNameL = dayName
         destVCinputTotals.goaledtodayCases = dayValues
-       
+       //Later place values for week and month
     }
     
 }

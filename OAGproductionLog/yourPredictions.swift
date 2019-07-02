@@ -11,32 +11,35 @@ import CoreData
 
 class yourPredictions: UIViewController {
     
-    var goaledValues : Int16?
-    var doneValues : Int16?
-    var resultsValues : Int16?
-    var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+//    var dayName : String?
+//    var goaledValues : Int16?
+//    var doneValues : Int16?
+//    var resultsValues : Int16?
+//    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     
     var arrayStats = [Statistics]()
     var inputTotalsVals = Statistics(context: PersistenceService.context)
-    var rowCounter:Int = 0
+    
     
     @IBOutlet weak var tableView: UITableView!
 
     @IBAction func saveBTN(_ sender: Any) {
        
-        savingData()
+        //savingData()
         print(inputTotalsVals)
         print("SAVED BUTTON PRESSED")
     }
     
     override func viewDidLoad() {
-        
-        
         super .viewDidLoad()
-        rowCounter = rowCounter + 1
-
+        
+        let date = Date()
+        let myCalendar = Calendar(identifier: .gregorian)
+        let today = myCalendar.component(.weekday, from: date)
+       // print(days[today-1])
+        
         print("&&&&&&&&&&&&&&&&&&")
-        print(rowCounter)
+        print("Reloading table")
 
         // getting values from Statistics Class where we saved previously
         let fetchRequest: NSFetchRequest<Statistics> = Statistics.fetchRequest()
@@ -44,7 +47,7 @@ class yourPredictions: UIViewController {
         do {
             let arrayStats = try PersistenceService.context.fetch(fetchRequest)
             self.arrayStats = arrayStats
-            self.tableView.reloadData()
+           // self.tableView.reloadData()
         } catch {
             print("Soemthing went wrong when trying to get values from the PersistenceService function")
         }
@@ -55,24 +58,25 @@ class yourPredictions: UIViewController {
     
 
     
-    @objc func loadList(notification: NSNotification){
-        //load data here
-        self.tableView.reloadData()
-    }
     
-    func savingData() {
-        //populating new array with values from Statistics class
-         let dataStats = Statistics(context: PersistenceService.context)
-        //If statement to prevent unwrapping error
-        if (dataStats == nil){
-            dataStats.goal = goaledValues!
-            dataStats.done = doneValues!
-            dataStats.results = resultsValues!
-            PersistenceService.saveContext()
-            self.arrayStats.append(dataStats)
-            self.tableView.reloadData()
-        }
-    }
+//    @objc func loadList(notification: NSNotification){
+//        //load data here
+//        self.tableView.reloadData()
+//    }
+    
+//    func savingData() {
+//        //populating new array with values from Statistics class
+//         let dataStats = Statistics(context: PersistenceService.context)
+//        //If statement to prevent unwrapping error
+//        if (dataStats == nil){
+//            dataStats.goal = goaledValues!
+//            dataStats.done = doneValues!
+//            dataStats.results = resultsValues!
+//            PersistenceService.saveContext()
+//            self.arrayStats.append(dataStats)
+//            self.tableView.reloadData()
+//        }
+//    }
     
 //    func performanceCalculator(){
 //        
@@ -98,25 +102,26 @@ class yourPredictions: UIViewController {
 }
 
 extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
- 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return arrayStats.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
+        
+        print(arrayStats.count)
         //Creates object to make cells in the table
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
       
             //Assigning values to the first row of the table only
             //Assigning values to Done and Results labels in the Table
-        
-            cell.dayLabel?.text = days[indexPath.row]
+            //cell.dayLabel?.text = days[indexPath.row]
+            cell.dayLabel?.text = arrayStats[indexPath.row].day
             cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
             cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
             cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)

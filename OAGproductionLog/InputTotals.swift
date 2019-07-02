@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 class InputTotals: UIViewController {
     
+    @IBOutlet weak var dayNameLabel: UILabel!
     @IBOutlet weak var inputDaycases: UITextField!
     @IBOutlet weak var goalCasesLabel: UILabel!
     @IBOutlet weak var casesResults: UILabel!
@@ -18,6 +19,7 @@ class InputTotals: UIViewController {
     var inputdayCases : String!
     
     // variable to place incoming values from the goal daycases viewcontrollers
+    var dayNameL = ""
     var goaledtodayCases = ""
     var casesResultsData = ""
     
@@ -26,7 +28,9 @@ class InputTotals: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayNameLabel.text = dayNameL
         goalCasesLabel.text = goaledtodayCases
+        
     }
     
     @IBAction func calculateButton(_ sender: Any) {
@@ -66,6 +70,7 @@ class InputTotals: UIViewController {
     
     func savingValues() {
         let statistics = Statistics(context: PersistenceService.context)
+        statistics.day = String(dayNameL)
         statistics.goal = Int16(goaledtodayCases)!
         statistics.done = Int16(inputdayCases)!
         statistics.results = Int16(casesResultsData)!

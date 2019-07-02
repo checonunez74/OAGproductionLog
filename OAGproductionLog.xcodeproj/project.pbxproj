@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4302BADF22C97C750004C2AE /* Statistics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302BADE22C97C750004C2AE /* Statistics+CoreDataProperties.swift */; };
 		4362021622931FA7001EED6C /* Statistics+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362021422931FA7001EED6C /* Statistics+CoreDataClass.swift */; };
 		4362021722931FA7001EED6C /* Statistics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362021522931FA7001EED6C /* Statistics+CoreDataProperties.swift */; };
 		4362021922934B0F001EED6C /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362021822934B0F001EED6C /* PersistenceService.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4302BADE22C97C750004C2AE /* Statistics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Statistics+CoreDataProperties.swift"; path = "OAGproductionLog/Statistics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4362021422931FA7001EED6C /* Statistics+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4362021522931FA7001EED6C /* Statistics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4362021822934B0F001EED6C /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		43673B3F2236D874002DA788 = {
 			isa = PBXGroup;
 			children = (
+				4302BADE22C97C750004C2AE /* Statistics+CoreDataProperties.swift */,
 				43673B4A2236D874002DA788 /* OAGproductionLog */,
 				43673B622236D875002DA788 /* OAGproductionLogTests */,
 				43673B6D2236D876002DA788 /* OAGproductionLogUITests */,
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				438E0849224A99B900033366 /* dataResults.swift in Sources */,
+				4302BADF22C97C750004C2AE /* Statistics+CoreDataProperties.swift in Sources */,
 				4362021922934B0F001EED6C /* PersistenceService.swift in Sources */,
 				43D2785E2238506600F0A474 /* Goals.swift in Sources */,
 				43D2785C2238474000F0A474 /* OAG_productionLog.swift in Sources */,

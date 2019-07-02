@@ -11,22 +11,28 @@ import UIKit
 
 class setGoals: UIViewController {
 
+    @IBOutlet weak var dayNameText: UITextField!
     @IBOutlet weak var dayGoalText: UITextField!
     @IBOutlet weak var weekGoalText: UITextField!
     @IBOutlet weak var monthGoalText: UITextField!
     
+    var DayName : String!
     var DailyValue : String!
     var WeeklyValue : String!
     var MonthlyValue : String!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
 
     }
     
     //Button function for setDaily value
     @IBAction func setDailyGoalButton(_ sender: Any) {
         
+        DayName = dayNameText.text
         DailyValue = dayGoalText.text
         WeeklyValue = weekGoalText.text
         MonthlyValue = monthGoalText.text
@@ -41,6 +47,7 @@ class setGoals: UIViewController {
         //Sending values to goals screen labels
         let destVC = segue.destination as! Goals
         
+        destVC.dayName = DayName
         destVC.dayValues = DailyValue
         destVC.weekValues = WeeklyValue
         destVC.monthValues = MonthlyValue
