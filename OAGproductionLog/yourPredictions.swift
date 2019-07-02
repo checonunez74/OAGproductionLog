@@ -15,9 +15,8 @@ class yourPredictions: UIViewController {
 //    var goaledValues : Int16?
 //    var doneValues : Int16?
 //    var resultsValues : Int16?
-//    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     
-    var arrayStats = [Statistics]()
+    var arrayStatsData = [Statistics]()
     var inputTotalsVals = Statistics(context: PersistenceService.context)
     
     
@@ -33,11 +32,6 @@ class yourPredictions: UIViewController {
     override func viewDidLoad() {
         super .viewDidLoad()
         
-        let date = Date()
-        let myCalendar = Calendar(identifier: .gregorian)
-        let today = myCalendar.component(.weekday, from: date)
-       // print(days[today-1])
-        
         print("&&&&&&&&&&&&&&&&&&")
         print("Reloading table")
 
@@ -46,7 +40,7 @@ class yourPredictions: UIViewController {
         
         do {
             let arrayStats = try PersistenceService.context.fetch(fetchRequest)
-            self.arrayStats = arrayStats
+            self.arrayStatsData = arrayStats
            // self.tableView.reloadData()
         } catch {
             print("Soemthing went wrong when trying to get values from the PersistenceService function")
@@ -108,23 +102,24 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return arrayStats.count
+        print(arrayStatsData.count)
+        return arrayStatsData.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print(arrayStats.count)
+        
         //Creates object to make cells in the table
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
       
             //Assigning values to the first row of the table only
             //Assigning values to Done and Results labels in the Table
             //cell.dayLabel?.text = days[indexPath.row]
-            cell.dayLabel?.text = arrayStats[indexPath.row].day
-            cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
-            cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
-            cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)
+            cell.dayLabel?.text = arrayStatsData[indexPath.row].day
+            cell.goaledLabel?.text = String(arrayStatsData[indexPath.row].goal)
+            cell.doneLabel?.text = String(arrayStatsData[indexPath.row].done)
+            cell.resultsLabel?.text = String(arrayStatsData[indexPath.row].results)
         
        return cell
     }

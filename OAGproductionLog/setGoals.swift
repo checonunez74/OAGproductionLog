@@ -11,7 +11,7 @@ import UIKit
 
 class setGoals: UIViewController {
 
-    @IBOutlet weak var dayNameText: UITextField!
+    @IBOutlet weak var dayNameLabel: UILabel!
     @IBOutlet weak var dayGoalText: UITextField!
     @IBOutlet weak var weekGoalText: UITextField!
     @IBOutlet weak var monthGoalText: UITextField!
@@ -21,18 +21,32 @@ class setGoals: UIViewController {
     var WeeklyValue : String!
     var MonthlyValue : String!
     
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    
+    var dayNameHolder = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dayNameLabel?.text = dayName()
        
-
+        
+    }
+    
+    func dayName() -> String {
+        let date = Date()
+        let myCalendar = Calendar(identifier: .gregorian)
+        let today = myCalendar.component(.weekday, from: date)
+        print(days[today-1])
+        dayNameHolder = days[today-1]
+        
+        return dayNameHolder
     }
     
     //Button function for setDaily value
     @IBAction func setDailyGoalButton(_ sender: Any) {
         
-        DayName = dayNameText.text
+        DayName = dayNameHolder
         DailyValue = dayGoalText.text
         WeeklyValue = weekGoalText.text
         MonthlyValue = monthGoalText.text

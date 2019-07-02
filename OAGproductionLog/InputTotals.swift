@@ -76,7 +76,7 @@ class InputTotals: UIViewController {
         statistics.results = Int16(casesResultsData)!
         PersistenceService.saveContext()
         self.resultsARRAY.append(statistics)
-        //yourPredictions.tableView.reloadData() //At this point the table has to be reloaded but my table is in another VC
+       
         print("PRINTING ARRAY RESULTS:")
         print(resultsARRAY)
     }
@@ -87,7 +87,7 @@ class InputTotals: UIViewController {
     //sending values to yourPredictions screen label
     let destVCyourPredictions = segue.destination as! yourPredictions
         
-        destVCyourPredictions.arrayStats = resultsARRAY
+        destVCyourPredictions.arrayStatsData = resultsARRAY
        
 //        destVCyouPredictions.goaledValues = Statistics.goal
 //        destVCyouPredictions.doneValues = statistics.done
