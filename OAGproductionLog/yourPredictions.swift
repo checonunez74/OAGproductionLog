@@ -104,7 +104,7 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
     
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return days.count
+         return arrayStats.count
         
     }
     
@@ -112,9 +112,7 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
      
         //Creates object to make cells in the table
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell") as! ResultsCell
-        let counter = days.count
-        if ( counter > 0 ){
-        
+      
             //Assigning values to the first row of the table only
             //Assigning values to Done and Results labels in the Table
         
@@ -122,8 +120,7 @@ extension yourPredictions: UITableViewDataSource, UITableViewDelegate {
             cell.goaledLabel?.text = String(arrayStats[indexPath.row].goal)
             cell.doneLabel?.text = String(arrayStats[indexPath.row].done)
             cell.resultsLabel?.text = String(arrayStats[indexPath.row].results)
-            
-        } else { print("Database is empty!") }
+        
        return cell
     }
 }
